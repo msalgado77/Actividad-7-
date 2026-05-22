@@ -3,11 +3,13 @@ tabla = {}
 
 for i in range(num_equipos):
     nombre = input("Nombre del equipo: ")
+# Variables de los datos que se piden
     tabla[nombre] = {"PJ": 0, "PG": 0, "PE": 0, "PP": 0, "GF": 0, "GC": 0, "PTS": 0}
 
 
 num_partidos = int(input("¿Cuántos partidos han jugado?: "))
 
+# Lo que se ve se muestra al usuario y entra los datos
 for i in range(num_partidos):
     print(f"Partido {i+1}:")
     local = input("Equipo Local: ").strip()
@@ -15,6 +17,7 @@ for i in range(num_partidos):
     visitante = input("Equipo Visitante: ").strip()
     gv = int(input(f"Goles de {visitante}: "))
 
+# Actualizaciones
     tabla[local]["PJ"] += 1
     tabla[local]["GF"] += gl
     tabla[local]["GC"] += gv
@@ -22,6 +25,7 @@ for i in range(num_partidos):
     tabla[visitante]["GF"] += gv
     tabla[visitante]["GC"] += gl
 
+# Poner los puntos por como les va en el partido
     if gl > gv:
         tabla[local]["PG"] += 1
         tabla[local]["PTS"] += 3
@@ -38,9 +42,10 @@ for i in range(num_partidos):
 
 
 print("TABLA DE POSICIONES")
+# Se deja reservado unos espacios para que se vea organizado cuando salga
 print(f"{'EQUIPO':<15} | {'PJ':<3} | {'GF':<3} | {'GC':<3} | {'PTS':<3}")
 
-
+# Clasificación mas ordenada
 ordenados = sorted(tabla.items(), key=lambda x: x[1]["PTS"], reverse=True)
 
 for nombre, datos in ordenados:
