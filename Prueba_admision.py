@@ -3,6 +3,7 @@ correctas = input("Ingrese las 60 respuestas correctas: ")
 
 n = int(input("¿Cuántos estudiantes harán el examen?: "))
 
+# Todas las variables se nombran y empiezan vacias
 estudiantes = []
 suma_mat = suma_verb = suma_total = 0
 mayor_puntaje = 0
@@ -13,6 +14,7 @@ for i in range(n):
     credencial = input("Número de credencial: ")
     respuestas = input("Ingrese las 60 respuestas: ")
 
+# Se comparan las respuestas y se suman las que estan bien 
     puntaje_mat = sum(respuestas[j] == correctas[j] for j in range(30))
     puntaje_verb = sum(respuestas[j] == correctas[j] for j in range(30, 60))
     total = puntaje_mat + puntaje_verb
@@ -36,6 +38,7 @@ for i in range(n):
     print(f"Matemáticas: {puntaje_mat} y Verbal: {puntaje_verb}")
     print(f" Total: {total}")
 
+# Promedios
 prom_mat = suma_mat / n
 prom_verb = suma_verb / n
 prom_total = suma_total / n
